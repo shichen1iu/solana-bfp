@@ -4,7 +4,7 @@ use solana_program::program_error::ProgramError;
 
 use crate::error::EscrowError::InvalidInstruction;
 
- pub enum EscrowInstruction {
+ pub enum EscrowInstruction {//枚举类型,用于定义不同的指令
 
     /// Starts the trade by creating and populating an escrow account and transferring ownership of the given temp token account to the PDA
     ///
@@ -17,9 +17,10 @@ use crate::error::EscrowError::InvalidInstruction;
     /// 3. `[writable]` The escrow account, it will hold all necessary info about the trade.
     /// 4. `[]` The rent sysvar
     /// 5. `[]` The token program
-    InitEscrow {
+
+    InitEscrow {//这个指令的作用是开始一笔交易，将必要的账户和金额信息存储在一个托管账户（Escrow Account）中
         /// The amount party A expects to receive of token Y
-        amount: u64
+        amount: u64//代表 A 方期望收到的代币数量（以 u64 格式存储）
     }
 }
 
